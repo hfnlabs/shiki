@@ -1,13 +1,11 @@
 {
   "name": "shiki-hfcpack",
-  "version": "0.11.1",
+  "version": "0.11.2",
   "description": "shiki",
   "author": "Pine Wu <octref@gmail.com>",
   "homepage": "https://github.com/octref/shiki/tree/main/packages/shiki",
   "license": "MIT",
-  "type": "module",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
   "keywords": [
     "shiki",
     "syntax-highlighter",

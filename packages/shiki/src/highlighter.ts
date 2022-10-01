@@ -33,7 +33,7 @@ function resolveOptions(options: HighlighterOptions) {
     _themes.unshift(options.theme)
   }
   if (!_themes.length) {
-    _themes = ['nord']
+    _themes = ['hfcpack']
   }
 
   return { _languages, _themes }

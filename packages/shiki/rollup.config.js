@@ -28,8 +28,8 @@ export default defineConfig([
     external,
     output: [
       {
-        file: 'dist/index.esm.js',
-        format: 'esm'
+        file: 'dist/index.js',
+        format: 'cjs'
       }
     ],
     plugins: [
