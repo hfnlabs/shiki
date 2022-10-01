@@ -16,7 +16,7 @@ const replace = opts => {
   })
 }
 
-const external = ['vscode-oniguruma', 'vscode-textmate']
+const external = ['vscode-oniguruma', 'vscode-textmate', 'jsonc-parser']
 const globals = {
   'vscode-oniguruma': 'vscode-oniguruma',
   'vscode-textmate': 'vscode-textmate'
@@ -27,10 +27,6 @@ export default defineConfig([
     input: 'src/index.ts',
     external,
     output: [
-      {
-        file: 'dist/index.js',
-        format: 'cjs'
-      },
       {
         file: 'dist/index.esm.js',
         format: 'esm'
@@ -44,67 +40,6 @@ export default defineConfig([
       esbuild(),
       nodeResolve(),
       commonjs()
-    ]
-  },
-  {
-    input: 'src/index.ts',
-    external,
-    output: {
-      file: 'dist/index.browser.mjs',
-      format: 'esm',
-      globals
-    },
-    plugins: [
-      replace({
-        __BROWSER__: JSON.stringify(true),
-        __CDN_ROOT__: ''
-      }),
-      esbuild(),
-      nodeResolve(),
-      commonjs(),
-      terser()
-    ]
-  },
-  {
-    input: 'src/index.ts',
-    external,
-    output: {
-      file: 'dist/index.unpkg.iife.js',
-      format: 'iife',
-      name: 'shiki',
-      extend: true,
-      globals
-    },
-    plugins: [
-      replace({
-        __BROWSER__: JSON.stringify(true),
-        __CDN_ROOT__: `https://unpkg.com/shiki@${version}/`
-      }),
-      esbuild(),
-      nodeResolve(),
-      commonjs(),
-      terser()
-    ]
-  },
-  {
-    input: 'src/index.ts',
-    external,
-    output: {
-      file: 'dist/index.jsdelivr.iife.js',
-      format: 'iife',
-      name: 'shiki',
-      extend: true,
-      globals
-    },
-    plugins: [
-      replace({
-        __BROWSER__: JSON.stringify(true),
-        __CDN_ROOT__: `https://cdn.jsdelivr.net/npm/shiki@${version}/`
-      }),
-      esbuild(),
-      nodeResolve(),
-      commonjs(),
-      terser()
     ]
   },
   {
